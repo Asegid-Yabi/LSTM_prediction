@@ -21,11 +21,7 @@ The project consists of the following main components:
 
 ## Usage
 
-1. Install the required dependencies listed in `requirements.txt`.
-    ```
-    pip install -r requirements.txt
-    ```
-
+1. Install the required dependencies listed.
 2. Run the `DataPreprocessing.ipynb` notebook to preprocess the data.
 3. Run the `ModelTraining.ipynb` notebook to train the LSTM model.
 4. Run the `PlotResults.ipynb` notebook to visualize the predicted and actual weather values.
