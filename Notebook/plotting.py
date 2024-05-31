@@ -3,16 +3,25 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 from numpy import nan
+import os
+
+
+# Determine the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the relative path from the script's directory
+location = os.path.join(script_dir, '../Datasets/Output_data/Prediction.csv')
 
 def load_file (predicted_file_path):
     pred = pd.read_csv(predicted_file_path)
     return pred
-location = '.\\Output_data\\NewPrediction.csv'
+
+# location = 'github_file/Datasets/Output_data/Prediction.csv'
 
 def plot_results():
     shp_csv = load_file(location)
     # import shape file
-    gdf = gpd.read_file(r'E:\china_2nd\Open src\Proj\Github\Shape_files\eth_admbnda_adm2_csa_bofedb_2021.shp')
+    gdf = gpd.read_file(os.path.join(script_dir, '../Datasets/Shape_files/eth_admbnda_adm2_csa_bofedb_2021.shp'))
     shpcsv = shp_csv.loc[:,['Stations_Feature','Actual Day 1','Predicted Day 1']]
 
     # Mapping the stations name with shape file name
@@ -80,6 +89,8 @@ def plot_results():
         fig.show()
 
 
-# def load_file (predicted_file_path):
-#     pred = pd.read_csv(predicted_file_path)
-# plot_results()
+
+# pred = pd.read_csv('github_file/Datasets/Output_data/Prediction.csv')
+
+
+plot_results()
